@@ -923,7 +923,7 @@ Contract.prototype._executeMethod = function _executeMethod(){
             payload.method = 'eth_call';
             payload.format = this._parent._decodeMethodReturn.bind(null, this._method.outputs);
         } else {
-            payload.method = 'eth_sendTransaction';
+            payload.method = 'eth_sendRawTransaction';
         }
 
         return payload;
@@ -1049,7 +1049,7 @@ Contract.prototype._executeMethod = function _executeMethod(){
 
             var sendTransaction = (new Method({
                 name: 'sendTransaction',
-                call: 'eth_sendTransaction',
+                call: 'eth_sendRawTransaction',
                 params: 1,
                 inputFormatter: [formatters.inputTransactionFormatter],
                 requestManager: _this._parent._requestManager,
